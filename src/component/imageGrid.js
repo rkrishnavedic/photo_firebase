@@ -17,7 +17,11 @@ const ImageGrid = ({setSelectedImg})=>{
                 <motion.div whileHover={{scale:1.2}} className="card" key={doc.id}
                 onClick={()=>setSelectedImg(doc.url)}
                 >
-                    <img src={doc.url} alt={doc.url}/>
+                    <img className="card-img-top" src={doc.url} alt={doc.url}/>
+                    <div className="card-body">
+                        <p className="card-text" style={{fontSize:'0.7rem'}}>Some Text here for reference and available! I can add like icons and many more! :)</p>
+                    </div>
+
                 </motion.div>
                 )
             })}

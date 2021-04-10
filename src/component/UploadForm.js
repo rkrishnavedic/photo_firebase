@@ -37,6 +37,7 @@ const UploadForm = () =>{
                 {file && <div className="file">{file.name}</div>}
                 {file && <ProgressBar file={file} setFile={setFile} />}
                 </div>
+                
         </form>
     )
 }
