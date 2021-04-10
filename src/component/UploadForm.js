@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import ProgressBar from './ProgressBar';
 import '../App.css';
-import {motion} from 'framer-motion';
 
 
 const UploadForm = () =>{

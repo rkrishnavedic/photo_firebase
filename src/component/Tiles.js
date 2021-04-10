@@ -4,11 +4,9 @@ import UploadForm from "./UploadForm";
 import ImageGrid from "./imageGrid";
 import Modal from '../component/modal';
 import '../App.css';
-import {motion} from 'framer-motion';
 
 
 function Tiles(props) {
-    const todosRef = firestore.collection(`users/${auth.currentUser.uid}/todos`)
 
     const [selectedImg, setSelectedImg] = useState(null);
     const {handleLogout} = props;

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import {auth, firestore, timestamp} from '../config/fire';
 import {storage} from '../config/fire';
 
