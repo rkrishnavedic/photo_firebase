@@ -14,7 +14,7 @@ const ImageGrid = ({setSelectedImg})=>{
 
                 return(
                 
-                <motion.div whileHover={{scale:1.2}} className="img-wrap" className="card" key={doc.id}
+                <motion.div whileHover={{scale:1.2}} className="card" key={doc.id}
                 onClick={()=>setSelectedImg(doc.url)}
                 >
                     <img src={doc.url} alt={doc.url}/>
