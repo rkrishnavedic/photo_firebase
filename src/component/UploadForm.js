@@ -23,7 +23,7 @@ const UploadForm = () =>{
             setError('');
         }else{
             setFile(null);
-            setError('Please select an image file (png, jpg, jpeg or svg)');
+            setError('Please select an image file (png, jpg, jpeg, tiff or bmp)');
         }
     }
 
