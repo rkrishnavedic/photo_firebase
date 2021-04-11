@@ -3,8 +3,10 @@ import useFirestore from '../hooks/useFirestore';
 import '../App.css';
 import {motion} from 'framer-motion';
 import heart from 'bootstrap-icons/icons/heart.svg';
+import heartFill from 'bootstrap-icons/icons/heart-fill.svg';
 import trash from 'bootstrap-icons/icons/trash.svg';
 import DeletePop from './delete';
+import FavClick from './favclick';
 
 const ImageGrid = ({setSelectedImg})=>{
     const [deleteId, setDeleteId] = useState(null);
@@ -26,7 +28,7 @@ const ImageGrid = ({setSelectedImg})=>{
                     <img onClick={()=>setSelectedImg(doc.url)} style={{borderTopLeftRadius:20, borderTopRightRadius:20}} className="card-img-top" src={doc.url} alt={doc.url}/>
                     <div className="card-body">
                         <motion.div className="justify-content-around card-text">
-                        <motion.img initial={{scale:1}} src={heart} />
+                        <motion.img initial={{scale:1}} onClick={()=>FavClick(doc.id, doc.favorite)} src={hearticon(doc.favorite)} />
                         <motion.img style={{float:'right'}} initial={{scale:0.8}} animate={{scale:1}} src={trash} onClick={()=>setDeleteId(doc.id)} />
                         </motion.div>
                     </div>
@@ -38,6 +40,15 @@ const ImageGrid = ({setSelectedImg})=>{
         {deleteId && <DeletePop setDeleteId={setDeleteId} id={deleteId}></DeletePop>}
 </>
     )
+}
+
+const hearticon=(heartfillenable)=>{
+
+    if(!heartfillenable){
+        return heart;
+    }
+    return heartFill;
+
 }
 
 export default ImageGrid;

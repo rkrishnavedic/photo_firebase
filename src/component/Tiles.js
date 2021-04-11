@@ -23,7 +23,7 @@ function Tiles(props) {
                 Add your wonderful memories!
             </h2>
 
-            <p className="text-sm">[favorite icon and trash icon, and much more to come! wait!!]</p>
+            <p className="text-sm"></p>
 
             <div style={{width:'80%', margin:'auto'}}>
 
