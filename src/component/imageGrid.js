@@ -6,11 +6,13 @@ import heartFill from 'bootstrap-icons/icons/heart-fill.svg';
 import heart from 'bootstrap-icons/icons/heart.svg';
 import penIcon from 'bootstrap-icons/icons/pencil-square.svg';
 import trash from 'bootstrap-icons/icons/trash.svg';
-import DeletePop from './delete';
-import FavClick from './favclick';
+import {DeletePop, FavClick, ImageStory} from './imageDesc';
+
 
 const ImageGrid = ({setSelectedImg})=>{
     const [deleteId, setDeleteId] = useState(null);
+    const [textId,setTextId] = useState(null);
+    const [text, setText] = useState(null);
     const {docs} = useFirestore('images');
     //console.log(docs);
 
@@ -35,10 +37,11 @@ const ImageGrid = ({setSelectedImg})=>{
                         </motion.div>
                         <hr/>
                         <motion.div style={{fontSize:'0.7rem'}} className="card-text">
-                        <img src={penIcon} alt="edit icon"/>
-                          &nbsp;  
-                            Want to add some story?
-                            (working over this feature!)
+                        <img src={penIcon} onClick={()=>{setTextId(doc.id); setText(doc.text)}} alt="edit icon"/>
+                          &nbsp; 
+                          {(doc.text && doc.text!=='')? doc.text:<span>
+                          Want to add some story?
+                              </span>}
                         </motion.div>
                     </div>
                     
@@ -46,7 +49,8 @@ const ImageGrid = ({setSelectedImg})=>{
                 )
             })}
         </div>
-        {deleteId && <DeletePop setDeleteId={setDeleteId} id={deleteId}></DeletePop>}
+        {deleteId && <DeletePop setDeleteId={setDeleteId} id={deleteId}/>}
+        {textId && <ImageStory setTextId={setTextId} setText={setText} id={textId} text={text}/>}
 </>
     )
 }
