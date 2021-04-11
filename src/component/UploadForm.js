@@ -12,7 +12,8 @@ const UploadForm = () =>{
         'image/png',
         'image/jpeg',
         'image/jpg',
-        'image/svg',
+        'image/tiff',
+        'image/bmp'
     ]
 
     const changeHandler = (e)=>{
