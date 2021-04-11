@@ -2,6 +2,8 @@ import React from 'react';
 import useFirestore from '../hooks/useFirestore';
 import '../App.css';
 import {motion} from 'framer-motion';
+import heart from 'bootstrap-icons/icons/heart.svg';
+import trash from 'bootstrap-icons/icons/trash.svg';
 
 const ImageGrid = ({setSelectedImg})=>{
 
@@ -11,21 +13,27 @@ const ImageGrid = ({setSelectedImg})=>{
     return (
         <div className="img-grid">
             {docs && docs.map(doc=>{
-
-                return(
                 
-                <motion.div whileHover={{scale:1.2}} className="card" key={doc.id}
-                onClick={()=>setSelectedImg(doc.url)}
+                return(
+                <motion.div 
+                style={{borderRadius: 20}}
+                whileHover={{scale:1.1}} 
+                className="card" 
+                key={doc.id}
                 >
-                    <img className="card-img-top" src={doc.url} alt={doc.url}/>
+                    <img onClick={()=>setSelectedImg(doc.url)} style={{borderTopLeftRadius:20, borderTopRightRadius:20}} className="card-img-top" src={doc.url} alt={doc.url}/>
                     <div className="card-body">
-                        <p className="card-text" style={{fontSize:'0.7rem'}}>Some Text here for reference and available! I can add like icons and many more! :)</p>
+                        <motion.div className="justify-content-around card-text">
+                        <motion.img initial={{scale:1}} src={heart} />
+                        <motion.img style={{float:'right'}} initial={{scale:1.2}} src={trash} />
+                        </motion.div>
                     </div>
 
                 </motion.div>
                 )
             })}
         </div>
+
     )
 }
 

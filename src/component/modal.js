@@ -11,10 +11,12 @@ const Modal = ({selectedImg, setSelectedImg})=>{
 
     return (
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='backdrop' onClick={handleClick}>
-
-        <motion.img initial={{y:'50%'}} animate={{y:0}} src={selectedImg} alt="enlarged-pic" />
+        
+        <motion.button className="rounded-circle btn btn-danger" onClick={() => setSelectedImg(null)}>x</motion.button>
+        <motion.img src={selectedImg} alt="enlarged-pic" />
         
         </motion.div>
+        
     )
 }
 
