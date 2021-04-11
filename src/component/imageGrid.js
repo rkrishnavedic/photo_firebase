@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useFirestore from '../hooks/useFirestore';
 import '../App.css';
 import {motion} from 'framer-motion';
 import heart from 'bootstrap-icons/icons/heart.svg';
 import trash from 'bootstrap-icons/icons/trash.svg';
+import DeletePop from './delete';
 
 const ImageGrid = ({setSelectedImg})=>{
-
+    const [deleteId, setDeleteId] = useState(null);
     const {docs} = useFirestore('images');
     //console.log(docs);
 
     return (
+      <>
         <div className="img-grid">
             {docs && docs.map(doc=>{
                 
@@ -25,7 +27,7 @@ const ImageGrid = ({setSelectedImg})=>{
                     <div className="card-body">
                         <motion.div className="justify-content-around card-text">
                         <motion.img initial={{scale:1}} src={heart} />
-                        <motion.img style={{float:'right'}} initial={{scale:1.2}} src={trash} />
+                        <motion.img style={{float:'right'}} initial={{scale:0.8}} animate={{scale:1}} src={trash} onClick={()=>setDeleteId(doc.id)} />
                         </motion.div>
                     </div>
 
@@ -33,7 +35,8 @@ const ImageGrid = ({setSelectedImg})=>{
                 )
             })}
         </div>
-
+        {deleteId && <DeletePop setDeleteId={setDeleteId} id={deleteId}></DeletePop>}
+</>
     )
 }
 
