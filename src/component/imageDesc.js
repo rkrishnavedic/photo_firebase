@@ -52,7 +52,7 @@ function ImageStory({setTextId,setText, id, text}){
            <input onChange={(e)=>setEditText(e.target.value)} value={editText} style={{fontSize:'0.7rem'}} className="input m-2 p-3"></input>
            <span> 
             <button onClick={handleSaveText}  className="btn m-2  btn-warning rounded-pill">Save</button>
-            <button onClick={handleCancel}  className="btn m-2  btn-secondary rounded-pill">Cancel</button>
+            <button onClick={handleCancel} on className="btn m-2  btn-secondary rounded-pill">Cancel</button>
            </span>
             </motion.div>
         </div>
@@ -60,4 +60,11 @@ function ImageStory({setTextId,setText, id, text}){
 
 }
 
-export {DeletePop, FavClick, ImageStory};
+function PublicClick(id,publicStatus){
+    const imageRef = firestore.collection(`users/${auth.currentUser.uid}/images`);
+    imageRef.doc(id).set({publicStatus: !publicStatus}, {merge: true})
+    //console.log(publicStatus);
+    // console.log(id);
+}
+
+export {DeletePop, FavClick, ImageStory, PublicClick};

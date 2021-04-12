@@ -6,7 +6,9 @@ import heartFill from 'bootstrap-icons/icons/heart-fill.svg';
 import heart from 'bootstrap-icons/icons/heart.svg';
 import penIcon from 'bootstrap-icons/icons/pencil-square.svg';
 import trash from 'bootstrap-icons/icons/trash.svg';
-import {DeletePop, FavClick, ImageStory} from './imageDesc';
+import publicIcon from 'bootstrap-icons/icons/eye-fill.svg';
+import privateIcon from 'bootstrap-icons/icons/eye-slash-fill.svg';
+import {DeletePop, FavClick, ImageStory, PublicClick} from './imageDesc';
 
 
 const ImageGrid = ({setSelectedImg})=>{
@@ -30,9 +32,10 @@ const ImageGrid = ({setSelectedImg})=>{
                 >
                     <img onClick={()=>setSelectedImg(doc.url)} style={{borderTopLeftRadius:20, borderTopRightRadius:20}} className="card-img-top" src={doc.url} alt={doc.url}/>
                     <div className="card-body">
-                        <motion.div className="justify-content-around card-text">
-                        <motion.img initial={{scale:1}} onClick={()=>FavClick(doc.id, doc.favorite)} src={hearticon(doc.favorite)} />
-                        <motion.img style={{float:'right'}} initial={{scale:0.8}} animate={{scale:1}} src={trash} onClick={()=>setDeleteId(doc.id)} />
+                        <motion.div className="d-flex justify-content-around card-text">
+                        <motion.img title={doc.publicStatus? "undo public":"public"} initial={{scale:1}} onClick={()=>PublicClick(doc.id, doc.publicStatus)} src={publicPost(doc.publicStatus)} />
+                        <motion.img title={doc.favorite? "undo favorite":"favorite"} initial={{scale:1}} onClick={()=>FavClick(doc.id, doc.favorite)} src={hearticon(doc.favorite)} />
+                        <motion.img title="delete post" initial={{scale:1}} src={trash} onClick={()=>setDeleteId(doc.id)} />
                         
                         </motion.div>
                         <hr/>
@@ -61,6 +64,15 @@ const hearticon=(heartfillenable)=>{
         return heart;
     }
     return heartFill;
+
+}
+
+const publicPost=(publicenable)=>{
+
+    if(publicenable){
+        return publicIcon;
+    }
+    return privateIcon;
 
 }
 
