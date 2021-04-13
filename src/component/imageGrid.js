@@ -28,16 +28,20 @@ const ImageGrid = ({setSelectedImg})=>{
                 return(
                 <motion.div 
                 style={{borderRadius: 20}}
-                whileHover={{scale:1.1}} 
+                whileHover={{
+                    scale:1.05,
+                    originY: -0.2,
+                }}
+                transition={{type:'spring', stiffness:750}}
                 className="card" 
                 key={doc.id}
                 >
                     <img onClick={()=>setSelectedImg(doc.url)} style={{borderTopLeftRadius:20, borderTopRightRadius:20}} className="card-img-top" src={doc.url} alt={doc.url}/>
                     <div className="card-body">
                         <motion.div className="d-flex justify-content-around card-text">
-                        <motion.img title={doc.publicId? "undo public":"public"} initial={{scale:1}} id={"publicButton"+doc.id} onClick={()=>{PublicClick(doc.id, doc.publicId, doc.text, doc.createdAt, doc.url)}} src={publicPost(doc.publicId)} />
-                        <motion.img title={doc.favorite? "undo favorite":"favorite"} initial={{scale:1}} onClick={()=>FavClick(doc.id, doc.favorite)} src={hearticon(doc.favorite)} />
-                        <motion.img title="delete post" initial={{scale:1}} src={trash} onClick={()=>{setDeleteId(doc.id);setDeleteIdP(doc.publicId);}} />
+                        <motion.img title={doc.publicId? "undo public":"public"} whileHover={{scale:0.9}} id={"publicButton"+doc.id} onClick={()=>{PublicClick(doc.id, doc.publicId, doc.text, doc.createdAt, doc.url)}} src={publicPost(doc.publicId)} />
+                        <motion.img title={doc.favorite? "undo favorite":"favorite"} whileHover={{scale:0.9}} onClick={()=>FavClick(doc.id, doc.favorite)} src={hearticon(doc.favorite)} />
+                        <motion.img title="delete post" src={trash} whileHover={{scale:0.9}} onClick={()=>{setDeleteId(doc.id);setDeleteIdP(doc.publicId);}} />
                         
                         </motion.div>
                         

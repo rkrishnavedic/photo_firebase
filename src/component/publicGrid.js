@@ -13,10 +13,20 @@ const PublicGrid = ({setUnAuth})=>{
     //console.log(docs);
 
     return (
-
+    
         <div className="App">
             <nav className="navbar justify-content-between">
-            <h1 className="title-h1">photos<span className="text-warning">Fire</span></h1>
+                <motion.h1 
+                    className="title-h1"
+                    style={{cursor:'pointer'}}
+                    whileHover={{
+                        scale:1.1,
+                        originY:-1,
+                    }}
+                    transition={{type:'spring', stiffness:400}}
+                    >
+                        photos<span className="text-warning">Fire</span>
+                </motion.h1>
             <div className="form-inline">
                 <button onClick={()=>setUnAuth(true)} className="btn btn-outline-primary mr-4 my-2 mr-sm-0 my-sm-0" >Enter your Gallery</button>
             </div>
@@ -36,7 +46,11 @@ const PublicGrid = ({setUnAuth})=>{
                 return(
                 <motion.div 
                 style={{borderRadius: 20}}
-                whileHover={{scale:1.1}} 
+                whileHover={{
+                    scale:1.05,
+                    originY: -0.2,
+                }}
+                transition={{type:'spring', stiffness:750}}
                 className="card" 
                 key={doc.id}
                 >
@@ -44,15 +58,15 @@ const PublicGrid = ({setUnAuth})=>{
                     <img loading="lazy" className="card-img-top" src={doc.url} alt={doc.url}/>
                     <div className="card-body">
                         <motion.div className="d-flex justify-content-around card-text">
-                        <motion.img title={doc.publicStatus? "public":"undo public"} initial={{scale:1}} src={publicIcon} onClick={()=>setUnAuth(true)} />
+                        <motion.img whileHover={{scale:0.9}} title={doc.publicStatus? "public":"undo public"} src={publicIcon} onClick={()=>setUnAuth(true)} />
                         {/* <motion.img title={doc.favorite? "undo favorite":"favorite"} initial={{scale:1}} onClick={()=>setUnAuth(true)} /> */}
-                        <motion.img title="delete post" initial={{scale:1}} src={trash} onClick={()=>setUnAuth(true)} />
+                        <motion.img whileHover={{scale:0.9}} title="delete post" src={trash} onClick={()=>setUnAuth(true)} />
                         
                         </motion.div>
-                        <div style={{textAlign:'center',fontSize:'0.5rem'}} className="card-text mt-1 text-secondary">{Date(doc.createdAt)}</div>
+                        <div style={{textAlign:'center',fontSize:'0.5rem'}} className="card-text mt-1 text-secondary">{Date(doc.createdAt.seconds*1000)}</div>
                         <hr/>
                         <motion.div style={{fontSize:'0.7rem'}} className="card-text">
-                        <img src={penIcon} onClick={()=>setUnAuth(true)}alt="edit icon"/>
+                        <motion.img whileHover={{scale:0.9}} src={penIcon} onClick={()=>setUnAuth(true)}alt="edit icon"/>
                           &nbsp; 
                           {(doc.text && doc.text!=='')? doc.text:<span>
                           Want to add some story? (only creator can edit)

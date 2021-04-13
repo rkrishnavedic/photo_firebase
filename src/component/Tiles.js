@@ -4,6 +4,7 @@ import ImageGrid from "./imageGrid";
 import Modal from '../component/modal';
 import '../App.css';
 import {auth} from '../config/fire';
+import {motion} from 'framer-motion';
 
 
 function Tiles(props) {
@@ -11,10 +12,15 @@ function Tiles(props) {
     const [selectedImg, setSelectedImg] = useState(null);
     const {handleLogout} = props;
     return (
-        <div className="body">
+       
         <div className="App">
             <nav className="navbar justify-content-between">
-            <h1 onClick={()=>{props.setUnAuth(false)}} style={{cursor:"pointer"}} className="title-h1">photos<span className="text-warning">Fire</span></h1>
+            <motion.h1 whileHover={{
+                        scale:1.1,
+                        originY:-1,
+                    }}
+                    transition={{type:'spring', stiffness:400}}
+                     className="title-h1" onClick={()=>{props.setUnAuth(false)}} style={{cursor:"pointer"}}>photos<span className="text-warning">Fire</span></motion.h1>
             <div className="form-inline">
                 <button onClick={handleLogout} className="btn btn-outline-danger mr-4 my-2 mr-sm-0 my-sm-0" >Logout</button>
             </div>
@@ -32,7 +38,7 @@ function Tiles(props) {
                 {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>}
             </div>
         </div>
-        </div>
+       
     )
 }
 
