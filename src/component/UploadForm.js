@@ -28,7 +28,7 @@ const UploadForm = () =>{
     }
 
     return(
-        <form>
+        <form className="mt-0">
             <label>
             <input type="file" onChange={changeHandler}/>
             <span className="rounded-pill btn btn-warning">Add</span>

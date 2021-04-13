@@ -60,35 +60,43 @@ function ImageStory({setTextId,setText, id, text}){
 
 }
 
-async function PublicClick(id,publicId, text, createdAt, url, publicID,setPublicID){
-    const imageIDRef = firestore.collection(`public/${auth.currentUser.uid}/images`).doc(id);
+function PublicClick(id,publicId, text, createdAt, url){
+    const imageIDRef = firestore.collection(`users/${auth.currentUser.uid}/images`).doc(id);
     const imagePublicRef = firestore.collection(`public/public/images`);
     
-    console.log(imagePublicRef);
+    // console.log(publicId);
+    // console.log(id);
+    // console.log(text);
+    // console.log(createdAt);
+    // console.log(url);
+    //console.log(imagePublicRef);
     // console.log(id)
     //console.log(imagedetails);
 
     //imageRef.doc(id).set({publicId: null or --- }, {merge: true})
 
     if(!publicId){
-        //If I wish to make it public
+    //     //If I wish to make it public
 
-        //add to public collection
-        
-        await imagePublicRef.add({userEmail: auth.currentUser.email, text: text, createdAt: createdAt, url: url})
+    //     //add to public collection
+    //console.log('here adding data')
+
+    const data = {userEmail: auth.currentUser.email, text:text, createdAt:createdAt, url:url}
+        //console.log(data);
+    imagePublicRef.add(data)
             .then((docref)=>{
-                setPublicID(docref.id);
+                //console.log(docref.id);
+                imageIDRef.set({publicId: docref.id}, {merge:true});
+                
             })
             .catch(err=>console.log(err));
     }else{
-
-        
-        await imagePublicRef.doc(publicId).delete();
-        //imageIDRef.set({publicId:null}, {merge:true});
-        setPublicID(null);
+        imagePublicRef.doc(publicId).delete().catch(err=>console.log(err));
+        imageIDRef.set({publicId:null}, {merge:true});
+    //     //setPublicID(null);
+    //console.log('nullify here')
     }
-
-    imageIDRef.set({publicId: publicID}, {merge:true});
+    //setPublicID(null);
 }
 
 export {DeletePop, FavClick, ImageStory, PublicClick};

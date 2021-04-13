@@ -3,6 +3,7 @@ import UploadForm from "./UploadForm";
 import ImageGrid from "./imageGrid";
 import Modal from '../component/modal';
 import '../App.css';
+import {auth} from '../config/fire';
 
 
 function Tiles(props) {
@@ -19,13 +20,12 @@ function Tiles(props) {
             </div>
             </nav>
 
-            <h2>
-                Add your wonderful memories!
-            </h2>
-
-            <p className="text-sm"></p>
-
             <div style={{width:'80%', margin:'auto'}}>
+
+            <div style={{textAlign:'center'}} className="card-body">
+                <div className="card-text" style={{fontSize:'0.6rem'}}>logged in as <span className="text-success">{auth.currentUser.email} </span> </div>
+                <div>Add your wonderful memories!</div>
+            </div>
 
                 <UploadForm/>
                 <ImageGrid setSelectedImg={setSelectedImg}/>

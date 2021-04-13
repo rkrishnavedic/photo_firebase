@@ -20,7 +20,7 @@ const useStorage = (file)=>{
         }, async ()=>{
             const url = await storageRef.getDownloadURL();
             const createdAt = timestamp();
-            collectionRef.add({url, createdAt, favorite: false, publicId: null})
+            collectionRef.add({url, createdAt, text: null,favorite: false, publicId: null})
             setUrl(url);
         });
 
