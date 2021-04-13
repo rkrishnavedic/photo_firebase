@@ -60,11 +60,35 @@ function ImageStory({setTextId,setText, id, text}){
 
 }
 
-function PublicClick(id,publicStatus){
-    const imageRef = firestore.collection(`users/${auth.currentUser.uid}/images`);
-    imageRef.doc(id).set({publicStatus: !publicStatus}, {merge: true})
-    //console.log(publicStatus);
-    // console.log(id);
+async function PublicClick(id,publicId, text, createdAt, url, publicID,setPublicID){
+    const imageIDRef = firestore.collection(`public/${auth.currentUser.uid}/images`).doc(id);
+    const imagePublicRef = firestore.collection(`public/public/images`);
+    
+    console.log(imagePublicRef);
+    // console.log(id)
+    //console.log(imagedetails);
+
+    //imageRef.doc(id).set({publicId: null or --- }, {merge: true})
+
+    if(!publicId){
+        //If I wish to make it public
+
+        //add to public collection
+        
+        await imagePublicRef.add({userEmail: auth.currentUser.email, text: text, createdAt: createdAt, url: url})
+            .then((docref)=>{
+                setPublicID(docref.id);
+            })
+            .catch(err=>console.log(err));
+    }else{
+
+        
+        await imagePublicRef.doc(publicId).delete();
+        //imageIDRef.set({publicId:null}, {merge:true});
+        setPublicID(null);
+    }
+
+    imageIDRef.set({publicId: publicID}, {merge:true});
 }
 
 export {DeletePop, FavClick, ImageStory, PublicClick};

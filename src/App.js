@@ -4,6 +4,7 @@ import Login from './component/Login';
 import Tiles from './component/Tiles';
 import fire, { auth } from './config/fire'
 import {useAuthState} from 'react-firebase-hooks/auth';
+import PublicGrid from './component/publicGrid';
 
 function App() {
 
@@ -12,6 +13,9 @@ function App() {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [hasAccount, setHasAccount] = useState(false);
+
+    //unauthorised try to access!
+    const [unAuth, setUnAuth] = useState(false);
 
     const clearInputs = ()=>{
       setEmail('');
@@ -72,10 +76,20 @@ function App() {
     const handleLogout = () =>{
       fire.auth().signOut();
     };
+  
+    //if unauthorised access! make it to login!
+  if(!unAuth){
+    return (
+      <div className="App">
+        <PublicGrid setUnAuth={setUnAuth}/>
+      </div>
+    )
+  }
 
   return (
     <div className="App">
-      {((!user)?
+      {
+      ((!user)?
       <Login
       email = {email}
       setEmail = {setEmail}

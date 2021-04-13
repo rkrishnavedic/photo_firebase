@@ -5,6 +5,10 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    match /public/public/{document=**} {
+      allow read, update, write, delete: if true;
+    }
+
    match /users/{uid}/{document=**} {
       allow read, write: if request.auth.uid == uid;
       allow update, delete: if request.auth.uid == uid;
