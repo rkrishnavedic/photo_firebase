@@ -35,7 +35,7 @@ const ImageGrid = ({setSelectedImg})=>{
                     <img onClick={()=>setSelectedImg(doc.url)} style={{borderTopLeftRadius:20, borderTopRightRadius:20}} className="card-img-top" src={doc.url} alt={doc.url}/>
                     <div className="card-body">
                         <motion.div className="d-flex justify-content-around card-text">
-                        <motion.img title={doc.publicId? "undo public":"public"} initial={{scale:1}} onClick={()=>{PublicClick(doc.id, doc.publicId, doc.text, doc.createdAt, doc.url)}} src={publicPost(doc.publicId)} />
+                        <motion.img title={doc.publicId? "undo public":"public"} initial={{scale:1}} id={"publicButton"+doc.id} onClick={()=>{PublicClick(doc.id, doc.publicId, doc.text, doc.createdAt, doc.url)}} src={publicPost(doc.publicId)} />
                         <motion.img title={doc.favorite? "undo favorite":"favorite"} initial={{scale:1}} onClick={()=>FavClick(doc.id, doc.favorite)} src={hearticon(doc.favorite)} />
                         <motion.img title="delete post" initial={{scale:1}} src={trash} onClick={()=>{setDeleteId(doc.id);setDeleteIdP(doc.publicId);}} />
                         
@@ -44,7 +44,7 @@ const ImageGrid = ({setSelectedImg})=>{
                         <div style={{textAlign:'center',fontSize:'0.5rem'}} className="card-text mt-1 text-secondary">{Date(doc.createdAt)}</div>
                         <hr/>
                         <motion.div style={{fontSize:'0.7rem'}} className="card-text">
-                        <img src={penIcon} onClick={()=>{setTextId(doc.id); setText(doc.text)}} alt="edit icon"/>
+                        <img src={penIcon} onClick={()=>{setTextId(doc.id); setText(doc.text);}} alt="edit icon"/>
                           &nbsp; 
                           {(doc.text && doc.text!=='')? doc.text:<span>
                           Want to add some story?

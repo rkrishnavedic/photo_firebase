@@ -105,7 +105,7 @@ function App() {
       clearErrors = {clearErrors}
       />
       :
-      <Tiles handleLogout={handleLogout}/>
+      <Tiles setUnAuth={setUnAuth} handleLogout={handleLogout}/>
       )}
     </div>
     

@@ -18,7 +18,7 @@ const PublicGrid = ({setUnAuth})=>{
             <nav className="navbar justify-content-between">
             <h1 className="title-h1">photos<span className="text-warning">Fire</span></h1>
             <div className="form-inline">
-                <button onClick={()=>setUnAuth(true)} className="btn btn-outline-primary mr-4 my-2 mr-sm-0 my-sm-0" >Login</button>
+                <button onClick={()=>setUnAuth(true)} className="btn btn-outline-primary mr-4 my-2 mr-sm-0 my-sm-0" >Enter your Gallery</button>
             </div>
 
             </nav>
