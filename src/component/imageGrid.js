@@ -45,7 +45,7 @@ const ImageGrid = ({setSelectedImg})=>{
                         
                         </motion.div>
                         
-                        <div style={{textAlign:'center',fontSize:'0.5rem'}} className="card-text mt-1 text-secondary">{Date(doc.createdAt)}</div>
+                        {/* <div style={{textAlign:'center',fontSize:'0.5rem'}} className="card-text mt-1 text-secondary">{Date(doc.createdAt)}</div> */}
                         <hr/>
                         <motion.div style={{fontSize:'0.7rem'}} className="card-text">
                         <img src={penIcon} onClick={()=>{setTextId(doc.id); setText(doc.text);}} alt="edit icon"/>

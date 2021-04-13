@@ -10,10 +10,10 @@ const Modal = ({selectedImg, setSelectedImg})=>{
     }
 
     return (
-        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} className='backdrop' onClick={handleClick}>
+        <motion.div initial={{scale:0, opacity: 0}} animate={{scale:1,opacity: 1}} className='backdrop' onClick={handleClick}>
         
         <motion.button style={{marginTop:'8%',marginLeft:'49%',position:'fixed'}} className="rounded-circle btn btn-danger" onClick={() => setSelectedImg(null)}>X</motion.button>
-        <motion.img src={selectedImg} alt="enlarged-pic" />
+        <motion.img initial={{scale:0}} animate={{scale:1}} transition={{delay:0.2}} src={selectedImg} alt="enlarged-pic" />
         
         </motion.div>
         

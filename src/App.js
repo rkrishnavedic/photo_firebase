@@ -5,6 +5,7 @@ import Tiles from './component/Tiles';
 import fire, { auth } from './config/fire'
 import {useAuthState} from 'react-firebase-hooks/auth';
 import PublicGrid from './component/publicGrid';
+import Foot from './component/Foot';
 
 function App() {
 
@@ -107,6 +108,8 @@ function App() {
       :
       <Tiles setUnAuth={setUnAuth} handleLogout={handleLogout}/>
       )}
+
+      <Foot/>
     </div>
     
   );

@@ -22,7 +22,10 @@ function Tiles(props) {
                     transition={{type:'spring', stiffness:400}}
                      className="title-h1" onClick={()=>{props.setUnAuth(false)}} style={{cursor:"pointer"}}>photos<span className="text-warning">Fire</span></motion.h1>
             <div className="form-inline">
-                <button onClick={handleLogout} className="btn btn-outline-danger mr-4 my-2 mr-sm-0 my-sm-0" >Logout</button>
+                <motion.button onClick={handleLogout}
+                whileHover={{scale:1.1, rotate:[0,-2,4], color:'brown'}}
+                transition={{type:'spring', duration:0.8}}
+                className="btn rounded-pill border-danger mr-4 my-2 mr-sm-0 my-sm-0" >Logout</motion.button>
             </div>
             </nav>
 
