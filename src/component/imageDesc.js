@@ -3,12 +3,17 @@ import {motion} from 'framer-motion';
 import { useState } from 'react';
 
 
-function DeletePop({id, setDeleteId}){
+function DeletePop({id,publicId,setPublicId, setDeleteId}){
 
     const imageRef = firestore.collection(`users/${auth.currentUser.uid}/images`);
+    const imagePublicRef = firestore.collection(`public/public/images`);
     
     const handleDeletion=(e)=>{
         //console.log('delte confirm')
+        if(publicId){
+    imagePublicRef.doc(publicId).delete().catch(err=>console.log(err));
+    setPublicId(null);
+        }
     imageRef.doc(id).delete()
     setDeleteId(null);
     }

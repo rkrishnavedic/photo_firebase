@@ -13,6 +13,7 @@ import {DeletePop, FavClick, ImageStory, PublicClick} from './imageDesc';
 
 const ImageGrid = ({setSelectedImg})=>{
     const [deleteId, setDeleteId] = useState(null);
+    const [deleteIdP, setDeleteIdP]= useState(null);
     const [textId,setTextId] = useState(null);
     const [text, setText] = useState(null);
 
@@ -36,7 +37,7 @@ const ImageGrid = ({setSelectedImg})=>{
                         <motion.div className="d-flex justify-content-around card-text">
                         <motion.img title={doc.publicId? "undo public":"public"} initial={{scale:1}} onClick={()=>{PublicClick(doc.id, doc.publicId, doc.text, doc.createdAt, doc.url)}} src={publicPost(doc.publicId)} />
                         <motion.img title={doc.favorite? "undo favorite":"favorite"} initial={{scale:1}} onClick={()=>FavClick(doc.id, doc.favorite)} src={hearticon(doc.favorite)} />
-                        <motion.img title="delete post" initial={{scale:1}} src={trash} onClick={()=>setDeleteId(doc.id)} />
+                        <motion.img title="delete post" initial={{scale:1}} src={trash} onClick={()=>{setDeleteId(doc.id);setDeleteIdP(doc.publicId);}} />
                         
                         </motion.div>
                         
@@ -56,7 +57,7 @@ const ImageGrid = ({setSelectedImg})=>{
                 )
             })}
         </div>
-        {deleteId && <DeletePop setDeleteId={setDeleteId} id={deleteId}/>}
+        {deleteId && <DeletePop setDeleteId={setDeleteId} publicId={deleteIdP} setPublicId={setDeleteIdP} id={deleteId}/>}
         {textId && <ImageStory setTextId={setTextId} setText={setText} id={textId} text={text}/>}
 </>
     )
