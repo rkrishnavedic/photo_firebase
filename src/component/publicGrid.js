@@ -14,8 +14,8 @@ const PublicGrid = ({setUnAuth})=>{
     //console.log(docs);
 
     return (
-    
-        <div className="App mx-4">
+
+        <motion.div className="App mx-4">
             <nav className="navbar justify-content-between">
                 <motion.h1 
                     className="title-h1"
@@ -53,6 +53,7 @@ const PublicGrid = ({setUnAuth})=>{
                 
                 return(
                     <>
+                
                 <motion.div 
                 style={{borderRadius: 20}}
                 whileHover={{
@@ -86,6 +87,7 @@ const PublicGrid = ({setUnAuth})=>{
                     </div>
                     
                 </motion.div>
+                
                 {index%3===2? <div className="w-100"></div>:null}
               </>
                 )
@@ -94,7 +96,8 @@ const PublicGrid = ({setUnAuth})=>{
             </div>
         {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>}
         <Foot/>
-    </div>
+    </motion.div>
+   
     )
 }
 
