@@ -18,7 +18,7 @@ const PublicGrid = ({setUnAuth})=>{
         <motion.div className="App mx-4">
             <nav className="navbar justify-content-between">
                 <motion.h1 
-                    className="title-h1"
+                    className="title-h1 text-secondary"
                     style={{cursor:'pointer'}}
                     whileHover={{
                         scale:1.1,
@@ -27,7 +27,7 @@ const PublicGrid = ({setUnAuth})=>{
                     transition={{type:'spring', stiffness:400}}
                     >
                        
-                        photos<span className="text-warning">Fire</span>
+                        photos<span className="text-primary">Fire</span>
                 </motion.h1>
                 
             <div className="form-inline">

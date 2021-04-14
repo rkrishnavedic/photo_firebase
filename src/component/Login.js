@@ -34,7 +34,7 @@ function toggleHasAccount(){
                         originX:-0.2,
                     }}
                     transition={{type:'spring',stiffness:400}}
-                     className="title-h1" style={{cursor:"pointer"}}>photos<span className="text-warning">Fire</span>
+                     className="title-h1 text-secondary" style={{cursor:"pointer"}}>photos<span className="text-primary">Fire</span>
             </motion.h1>
 
             
