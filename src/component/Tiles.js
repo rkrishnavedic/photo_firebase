@@ -23,6 +23,11 @@ function Tiles(props) {
                     transition={{type:'spring', stiffness:400}}
                      className="title-h1" onClick={()=>{props.setUnAuth(false)}} style={{cursor:"pointer"}}>photos<span className="text-warning">Fire</span></motion.h1>
             <div className="form-inline">
+            <motion.button onClick={()=>props.setUnAuth(false)} className="btn mx-3 rounded-pill border-primary mr-4 my-2 mr-sm-0 my-sm-0" 
+                whileHover={{scale:1.1, color:'navy',rotate:[0,-2,4]}}
+                transition={{type:'spring', duration:0.8}}
+                >move to public dashboard</motion.button>
+
                 <motion.button onClick={handleLogout}
                 whileHover={{scale:1.1, rotate:[0,-2,4], color:'brown'}}
                 transition={{type:'spring', duration:0.8}}
