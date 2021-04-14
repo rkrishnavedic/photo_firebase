@@ -22,10 +22,13 @@ const ImageGrid = ({setSelectedImg})=>{
 
     return (
       <>
-        <div className="img-grid">
-            {docs && docs.map(doc=>{
+        <div className="container">
+        
+        <div className="row d-flex justify-content-around text-center">
+            {docs && docs.map((doc,index)=>{
                 
                 return(
+                    <>
                 <motion.div 
                 style={{borderRadius: 20}}
                 whileHover={{
@@ -33,7 +36,7 @@ const ImageGrid = ({setSelectedImg})=>{
                     originY: -0.2,
                 }}
                 transition={{type:'spring', stiffness:750}}
-                className="card" 
+                className="col-md-3 m-3 card" 
                 key={doc.id}
                 >
                     <img onClick={()=>setSelectedImg(doc.url)} style={{borderTopLeftRadius:20, borderTopRightRadius:20}} className="card-img-top" src={doc.url} alt={doc.url}/>
@@ -58,8 +61,11 @@ const ImageGrid = ({setSelectedImg})=>{
                     </div>
                     
                 </motion.div>
+               {index%3===2? <div className="w-100"></div>:null}
+               </>
                 )
             })}
+        </div>
         </div>
         {deleteId && <DeletePop setDeleteId={setDeleteId} publicId={deleteIdP} setPublicId={setDeleteIdP} id={deleteId}/>}
         {textId && <ImageStory setTextId={setTextId} setText={setText} id={textId} text={text}/>}

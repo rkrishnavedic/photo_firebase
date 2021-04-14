@@ -26,7 +26,13 @@ function toggleHasAccount(){
 }
 
     return (
-
+<>
+<motion.h1 whileHover={{
+                        scale:1.1,
+                        originX:-0.2,
+                    }}
+                    transition={{type:'spring',stiffness:400}}
+                     className="title-h1" style={{cursor:"pointer"}}>photos<span className="text-warning">Fire</span></motion.h1>
     <motion.div initial={{ scale: 0 }}
     animate={{scale: 1, y:'15vh' }}
     transition={{
@@ -83,7 +89,7 @@ function toggleHasAccount(){
       </div>
     </div>
   </motion.div>
-      
+      </>
     )
 }
 

@@ -5,6 +5,7 @@ import Modal from '../component/modal';
 import '../App.css';
 import {auth} from '../config/fire';
 import {motion} from 'framer-motion';
+import Foot from "./Foot";
 
 
 function Tiles(props) {
@@ -12,8 +13,8 @@ function Tiles(props) {
     const [selectedImg, setSelectedImg] = useState(null);
     const {handleLogout} = props;
     return (
-       
-        <div className="App">
+       <>
+        <div className="App mx-4">
             <nav className="navbar justify-content-between">
             <motion.h1 whileHover={{
                         scale:1.1,
@@ -41,7 +42,8 @@ function Tiles(props) {
                 {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>}
             </div>
         </div>
-       
+        <Foot/>
+       </>
     )
 }
 

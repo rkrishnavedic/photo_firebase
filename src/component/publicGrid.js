@@ -8,8 +8,6 @@ import publicIcon from 'bootstrap-icons/icons/eye-fill.svg';
 import Foot from './Foot';
 import Modal from './modal';
 
-
-
 const PublicGrid = ({setUnAuth})=>{
     const {docs} = usePublicFirestore('images');
     const [selectedImg, setSelectedImg] = useState(null);
@@ -17,7 +15,7 @@ const PublicGrid = ({setUnAuth})=>{
 
     return (
     
-        <div className="App">
+        <div className="App mx-4">
             <nav className="navbar justify-content-between">
                 <motion.h1 
                     className="title-h1"
@@ -28,8 +26,10 @@ const PublicGrid = ({setUnAuth})=>{
                     }}
                     transition={{type:'spring', stiffness:400}}
                     >
+                       
                         photos<span className="text-warning">Fire</span>
                 </motion.h1>
+                
             <div className="form-inline">
                 <motion.button onClick={()=>setUnAuth(true)} className="btn rounded-pill border-primary mr-4 my-2 mr-sm-0 my-sm-0" 
                 whileHover={{scale:1.1, color:'navy',rotate:[0,-2,4]}}
@@ -45,12 +45,14 @@ const PublicGrid = ({setUnAuth})=>{
                 <br/>
                 ShowCase your <span style={{fontWeight:'bold'}} className="text-primary"> wonderful memories!</span>
         </div>
-        <div className="img-grid">
+        <div className="container">
         
+        <div className="row d-flex justify-content-around text-center">
 
-            {docs && docs.map(doc=>{
+            {docs && docs.map((doc, index)=>{
                 
                 return(
+                    <>
                 <motion.div 
                 style={{borderRadius: 20}}
                 whileHover={{
@@ -58,7 +60,7 @@ const PublicGrid = ({setUnAuth})=>{
                     originY: -0.2,
                 }}
                 transition={{type:'spring', stiffness:750}}
-                className="card" 
+                className="col-md-3 m-3 card" 
                 key={doc.id}
                 >
                     <div style={{fontSize:'0.7rem'}} className="d-flex card-text text-secondary justify-content-around">Post by: {doc.userEmail}</div>
@@ -84,9 +86,12 @@ const PublicGrid = ({setUnAuth})=>{
                     </div>
                     
                 </motion.div>
+                {index%3===2? <div className="w-100"></div>:null}
+              </>
                 )
             })}
-        </div>
+            </div>
+            </div>
         {selectedImg && <Modal selectedImg={selectedImg} setSelectedImg={setSelectedImg}/>}
         <Foot/>
     </div>
