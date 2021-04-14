@@ -18,7 +18,7 @@ const ProgressBar = ({file, setFile})=>{
         <motion.div
         initial={{width:0}}
         animate={{width: progress+'%'}}
-        className="bg-primary progress-bar">|||||||||</motion.div>
+        className="bg-primary progress-bar p-3">{Math.round(progress)}%</motion.div>
     )
 }
 

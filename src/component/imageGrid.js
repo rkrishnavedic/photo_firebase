@@ -39,7 +39,7 @@ const ImageGrid = ({setSelectedImg})=>{
                 className="col-md-3 m-3 card" 
                 key={doc.id}
                 >
-                    <img onClick={()=>setSelectedImg(doc.url)} style={{borderTopLeftRadius:20, borderTopRightRadius:20}} className="card-img-top" src={doc.url} alt={doc.url}/>
+                    <img onClick={()=>setSelectedImg(doc.url)} className="mt-3 card-img-top" src={doc.url} alt={doc.url}/>
                     <div className="card-body">
                         <motion.div className="d-flex justify-content-around card-text">
                         <motion.img title={doc.publicId? "undo public":"public"} whileHover={{scale:0.9}} id={"publicButton"+doc.id} onClick={()=>{PublicClick(doc.id, doc.publicId, doc.text, doc.createdAt, doc.url)}} src={publicPost(doc.publicId)} />
