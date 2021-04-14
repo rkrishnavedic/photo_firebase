@@ -103,6 +103,7 @@ function App() {
       setHasAccount = {setHasAccount}
       clearInputs = {clearInputs}
       clearErrors = {clearErrors}
+      setUnAuth = {setUnAuth}
       />
       :
       <Tiles setUnAuth={setUnAuth} handleLogout={handleLogout}/>

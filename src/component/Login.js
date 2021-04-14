@@ -18,7 +18,8 @@ function Login(props) {
   hasAccount ,
   setHasAccount ,
   clearInputs,
-  clearErrors
+  clearErrors,
+  setUnAuth
 } = props;
 
 function toggleHasAccount(){
@@ -27,12 +28,23 @@ function toggleHasAccount(){
 
     return (
 <>
-<motion.h1 whileHover={{
+<motion.div className="d-flex my-2 mx-4 justify-content-between">
+          <motion.h1 whileHover={{
                         scale:1.1,
                         originX:-0.2,
                     }}
                     transition={{type:'spring',stiffness:400}}
-                     className="title-h1" style={{cursor:"pointer"}}>photos<span className="text-warning">Fire</span></motion.h1>
+                     className="title-h1" style={{cursor:"pointer"}}>photos<span className="text-warning">Fire</span>
+            </motion.h1>
+
+            
+            <motion.button onClick={()=>setUnAuth(false)} className="btn rounded-pill border-primary mr-4 my-2 mr-sm-0 my-sm-0" 
+                whileHover={{scale:1.1, color:'navy',rotate:[0,-2,4]}}
+                transition={{type:'spring', duration:0.8}}
+                >move to public dashboard</motion.button>
+            
+
+            </motion.div>
     <motion.div initial={{ scale: 0 }}
     animate={{scale: 1, y:'15vh' }}
     transition={{
