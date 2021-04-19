@@ -36,6 +36,7 @@ const PublicGrid = ({setUnAuth})=>{
                 transition={{type:'spring', duration:0.8}}
                 >
                     Enter your Gallery</motion.button>
+                    
             </div>
 
             </nav>
